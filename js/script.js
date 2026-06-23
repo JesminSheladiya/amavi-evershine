@@ -104,6 +104,71 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', updateActiveLink, { passive: true });
   updateActiveLink();
 
+  // IMAGE SLIDERS
+  document.querySelectorAll('.plan-slider').forEach(slider => {
+    const track = slider.querySelector('.slider-track');
+    const images = track.querySelectorAll('img');
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    let current = 0;
+    const total = images.length;
+
+    // Create dots
+    images.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+    function goTo(index) {
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => {
+      goTo(current === 0 ? total - 1 : current - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      goTo(current === total - 1 ? 0 : current + 1);
+    });
+
+    // Auto-play
+    let autoPlay = setInterval(() => {
+      goTo(current === total - 1 ? 0 : current + 1);
+    }, 4000);
+
+    slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    slider.addEventListener('mouseleave', () => {
+      autoPlay = setInterval(() => {
+        goTo(current === total - 1 ? 0 : current + 1);
+      }, 4000);
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          goTo(current === total - 1 ? 0 : current + 1);
+        } else {
+          goTo(current === 0 ? total - 1 : current - 1);
+        }
+      }
+    }, { passive: true });
+  });
+
   // COUNTER ANIMATION
   const counters = document.querySelectorAll('.count-num');
   if (counters.length) {
