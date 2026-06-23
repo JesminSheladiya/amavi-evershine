@@ -104,69 +104,101 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', updateActiveLink, { passive: true });
   updateActiveLink();
 
-  // IMAGE SLIDERS
+  // IMAGE SLIDERS (scroll-snap)
   document.querySelectorAll('.plan-slider').forEach(slider => {
-    const track = slider.querySelector('.slider-track');
-    const images = track.querySelectorAll('img');
-    const prevBtn = slider.querySelector('.slider-prev');
-    const nextBtn = slider.querySelector('.slider-next');
+    const scroll = slider.querySelector('.slider-scroll');
+    const images = scroll.querySelectorAll('img');
+    const prevBtn = slider.querySelector('.slider-arrow-prev');
+    const nextBtn = slider.querySelector('.slider-arrow-next');
     const dotsContainer = slider.querySelector('.slider-dots');
-    let current = 0;
     const total = images.length;
+    let current = 0;
 
     // Create dots
     images.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Go to image ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
+      dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+      dot.addEventListener('click', () => {
+        current = i;
+        scroll.scrollTo({ left: current * scroll.clientWidth, behavior: 'smooth' });
+        updateDots();
+      });
       dotsContainer.appendChild(dot);
     });
 
     const dots = dotsContainer.querySelectorAll('.slider-dot');
 
-    function goTo(index) {
-      current = index;
-      track.style.transform = `translateX(-${current * 100}%)`;
+    function updateDots() {
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
 
-    prevBtn.addEventListener('click', () => {
-      goTo(current === 0 ? total - 1 : current - 1);
-    });
+    function snapTo(index) {
+      current = (index + total) % total;
+      scroll.scrollTo({ left: current * scroll.clientWidth, behavior: 'smooth' });
+      updateDots();
+    }
 
-    nextBtn.addEventListener('click', () => {
-      goTo(current === total - 1 ? 0 : current + 1);
+    prevBtn.addEventListener('click', () => snapTo(current - 1));
+    nextBtn.addEventListener('click', () => snapTo(current + 1));
+
+    // Track scroll position for dot sync
+    let ticking = false;
+    scroll.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const idx = Math.round(scroll.scrollLeft / scroll.clientWidth);
+          if (idx !== current && idx >= 0 && idx < total) {
+            current = idx;
+            updateDots();
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
 
     // Auto-play
-    let autoPlay = setInterval(() => {
-      goTo(current === total - 1 ? 0 : current + 1);
-    }, 4000);
-
-    slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    let auto = setInterval(() => snapTo(current + 1), 4000);
+    slider.addEventListener('mouseenter', () => clearInterval(auto));
     slider.addEventListener('mouseleave', () => {
-      autoPlay = setInterval(() => {
-        goTo(current === total - 1 ? 0 : current + 1);
-      }, 4000);
+      auto = setInterval(() => snapTo(current + 1), 4000);
     });
 
-    // Touch support
-    let touchStartX = 0;
-    slider.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
+    // Keyboard
+    slider.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') snapTo(current - 1);
+      if (e.key === 'ArrowRight') snapTo(current + 1);
+    });
 
-    slider.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          goTo(current === total - 1 ? 0 : current + 1);
-        } else {
-          goTo(current === 0 ? total - 1 : current - 1);
-        }
-      }
-    }, { passive: true });
+    // Mouse drag
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    scroll.addEventListener('mousedown', e => {
+      isDown = true;
+      startX = e.pageX - scroll.offsetLeft;
+      scrollLeft = scroll.scrollLeft;
+    });
+
+    scroll.addEventListener('mouseleave', () => {
+      isDown = false;
+      scroll.style.cursor = '';
+    });
+
+    scroll.addEventListener('mouseup', () => {
+      isDown = false;
+      scroll.style.cursor = '';
+    });
+
+    scroll.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scroll.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      scroll.scrollLeft = scrollLeft - walk;
+    });
   });
 
   // COUNTER ANIMATION
