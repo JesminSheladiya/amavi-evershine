@@ -173,11 +173,13 @@
 
   <!-- HERO -->
   <main>
-    <section class="hero" aria-label="Hero section">
+    <section class="hero" aria-label="Hero section" style="background-image: url('images/flats/2BHK - DSC_7900.jpg');">
+      <div class="hero-overlay"></div>
       <div class="hero-inner">
-        <div>
-          <div class="hero-eyebrow" aria-label="Offer tag">✦ New Possession Ready – Virar West</div>
-          <h1>2BHK Flat in Virar<br>Starting at <span>₹65.07 Lacs</span></h1>
+        <div class="hero-content">
+          <div class="hero-eyebrow">✦ New Possession Ready – Virar West</div>
+          <h1>2BHK Flat in Virar<br>Starting at <span>₹<span class="count-num" data-target="65.07">0.00</span>
+              Lacs</span></h1>
           <p class="hero-desc">
             Evershine Amavi 303 — a landmark residential township in Virar West. Spacious 2BHK apartments within
             Evershine Global City, offering world-class amenities, seamless connectivity, and a lifestyle built for
@@ -199,32 +201,12 @@
             <a href="#enquire" class="btn-primary">Book a Site Visit</a>
             <a href="#floor-plans" class="btn-outline">View Floor Plans</a>
           </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="hero-stat-num">8.1</div>
-              <div class="hero-stat-label">Acres Township</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">30+</div>
-              <div class="hero-stat-label">Amenities</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">32</div>
-              <div class="hero-stat-label">Projects Completed</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">60+</div>
-              <div class="hero-stat-label">Years of Trust</div>
-            </div>
-          </div>
         </div>
 
         <!-- LEAD FORM -->
         <aside id="enquire" aria-label="Enquiry form">
           <div class="lead-form-card">
-            <div class="rera-tag">
-              ✓ RERA Registered – No Brokerage
-            </div>
+            <div class="rera-tag">✓ RERA Registered – No Brokerage</div>
             <div class="form-title">Get Best Price & Floor Plan</div>
             <div class="form-subtitle">Our expert will call you within 10 minutes</div>
             <form action="#" method="POST" onsubmit="handleSubmit(event)">
@@ -260,7 +242,7 @@
                   <option value="exploring">Just exploring</option>
                 </select>
               </div>
-              <button type="submit" class="form-submit">📞 Request Callback Now</button>
+              <button type="submit" class="form-submit">Request Callback Now</button>
             </form>
             <div class="form-note">🔒 Your details are safe with us. No spam.</div>
           </div>
@@ -268,99 +250,128 @@
       </div>
     </section>
 
+    <!-- STATS COUNTER -->
+    <section class="stats-bar" aria-label="Project statistics">
+      <div class="stats-bar-inner">
+        <div class="stat-item">
+          <div class="stat-num"><span class="count-num" data-target="8.1" data-decimals="1">0</span></div>
+          <div class="stat-label">Acres Township</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="count-num" data-target="30" data-suffix="+">0</span></div>
+          <div class="stat-label">Amenities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="count-num" data-target="32" data-decimals="0">0</span></div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="count-num" data-target="60" data-suffix="+">0</span></div>
+          <div class="stat-label">Years of Trust</div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT PROJECT -->
     <section class="section section-alt" id="about-project">
       <div class="section-inner">
-        <div class="section-label">About the Project</div>
-        <h2 class="section-title">Evershine Amavi 303 – Virar West</h2>
-        <p class="section-desc">
-          A thoughtfully planned 2BHK community within Evershine's flagship Global City township. Designed for families
-          seeking spacious, connected living in one of Mumbai's fastest-growing suburbs.
-        </p>
-        <div class="specs-cols">
-          <table class="specs-table" aria-label="Project specifications">
-            <thead>
-              <tr>
-                <th colspan="2">Project Overview</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="specs-key">Project Name</td>
-                <td class="specs-val">Evershine Amavi 303</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Developer</td>
-                <td class="specs-val">Evershine Builders Pvt. Ltd.</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Location</td>
-                <td class="specs-val">Near Narangi Bypass Road, Virar West, Mumbai – 401303</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Total Area</td>
-                <td class="specs-val">8.1 Acres Township</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Configuration</td>
-                <td class="specs-val">1 BHK & 2 BHK Apartments</td>
-              </tr>
-              <tr>
-                <td class="specs-key">2BHK Carpet Area</td>
-                <td class="specs-val">535 sq.ft. – 612 sq.ft.</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Price Range</td>
-                <td class="specs-val">₹65.07 Lacs – ₹74.48 Lacs (all-inclusive)</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Possession Status</td>
-                <td class="specs-val"><span class="badge-green">OC Received – Ready to Move</span></td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="specs-table" aria-label="RERA and legal details">
-            <thead>
-              <tr>
-                <th colspan="2">Legal & RERA Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="specs-key">MahaRERA (Phase 1)</td>
-                <td class="specs-val">P99000024780</td>
-              </tr>
-              <tr>
-                <td class="specs-key">MahaRERA (Phase 2)</td>
-                <td class="specs-val">P99000024860</td>
-              </tr>
-              <tr>
-                <td class="specs-key">MahaRERA (Phase 3)</td>
-                <td class="specs-val">P99000024753</td>
-              </tr>
-              <tr>
-                <td class="specs-key">RERA Portal</td>
-                <td class="specs-val"><a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener"
-                    class="link-gold">maharera.maharashtra.gov.in</a></td>
-              </tr>
-              <tr>
-                <td class="specs-key">OC Status</td>
-                <td class="specs-val"><span class="badge-green">Received</span></td>
-              </tr>
-              <tr>
-                <td class="specs-key">CC Status</td>
-                <td class="specs-val"><span class="badge-green">Issued</span></td>
-              </tr>
-              <tr>
-                <td class="specs-key">Payment Plans</td>
-                <td class="specs-val">CLP Available</td>
-              </tr>
-              <tr>
-                <td class="specs-key">Home Loan</td>
-                <td class="specs-val"><span class="badge-gold">SBI, HDFC, ICICI Approved</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="about-grid">
+          <div class="about-intro">
+            <div class="about-intro-inner">
+              <div class="section-label">About the Project</div>
+              <h2 class="section-title">Evershine Amavi 303 – Virar West</h2>
+              <p class="section-desc">
+                A thoughtfully planned 2BHK community within Evershine's flagship Global City township. Designed for
+                families
+                seeking spacious, connected living in one of Mumbai's fastest-growing suburbs.
+              </p>
+            </div>
+          </div>
+          <div class="about-specs">
+            <table class="specs-table" aria-label="Project specifications">
+              <thead>
+                <tr>
+                  <th colspan="2">Project Overview</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="specs-key">Project Name</td>
+                  <td class="specs-val">Evershine Amavi 303</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Developer</td>
+                  <td class="specs-val">Evershine Builders Pvt. Ltd.</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Location</td>
+                  <td class="specs-val">Near Narangi Bypass Road, Virar West, Mumbai – 401303</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Total Area</td>
+                  <td class="specs-val">8.1 Acres Township</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Configuration</td>
+                  <td class="specs-val">1 BHK & 2 BHK Apartments</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">2BHK Carpet Area</td>
+                  <td class="specs-val">535 sq.ft. – 612 sq.ft.</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Price Range</td>
+                  <td class="specs-val">₹65.07 Lacs – ₹74.48 Lacs (all-inclusive)</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Possession Status</td>
+                  <td class="specs-val"><span class="badge-green">OC Received – Ready to Move</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="specs-table" aria-label="RERA and legal details">
+              <thead>
+                <tr>
+                  <th colspan="2">Legal & RERA Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="specs-key">MahaRERA (Phase 1)</td>
+                  <td class="specs-val">P99000024780</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">MahaRERA (Phase 2)</td>
+                  <td class="specs-val">P99000024860</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">MahaRERA (Phase 3)</td>
+                  <td class="specs-val">P99000024753</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">RERA Portal</td>
+                  <td class="specs-val"><a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener"
+                      class="link-pink">maharera.maharashtra.gov.in</a></td>
+                </tr>
+                <tr>
+                  <td class="specs-key">OC Status</td>
+                  <td class="specs-val"><span class="badge-green">Received</span></td>
+                </tr>
+                <tr>
+                  <td class="specs-key">CC Status</td>
+                  <td class="specs-val"><span class="badge-green">Issued</span></td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Payment Plans</td>
+                  <td class="specs-val">CLP Available</td>
+                </tr>
+                <tr>
+                  <td class="specs-key">Home Loan</td>
+                  <td class="specs-val"><span class="badge-pink">SBI, HDFC, ICICI Approved</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
