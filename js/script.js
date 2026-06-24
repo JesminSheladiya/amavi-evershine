@@ -1,12 +1,23 @@
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
+  const wrap = item.querySelector('.faq-a-wrap');
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    if (i !== item) {
+      i.classList.remove('open');
+      i.querySelector('.faq-a-wrap').style.maxHeight = '0';
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    }
   });
-  if (!isOpen) {
+
+  if (isOpen) {
+    item.classList.remove('open');
+    wrap.style.maxHeight = '0';
+    el.setAttribute('aria-expanded', 'false');
+  } else {
     item.classList.add('open');
+    wrap.style.maxHeight = wrap.scrollHeight + 'px';
     el.setAttribute('aria-expanded', 'true');
   }
 }
