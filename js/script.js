@@ -235,4 +235,95 @@ document.addEventListener('DOMContentLoaded', function () {
 
     counters.forEach(c => observer.observe(c));
   }
+
+  // TESTIMONIALS TABS
+  const testiData = [
+    {
+      img: 'images/flats/2BHK - DSC_7893.jpg',
+      quote: 'The all-inclusive pricing was a game changer \u2014 no hidden costs. The 2BHK feels much bigger than the square footage suggests. Really happy with the quality of finishes.',
+      name: 'Rajesh M.',
+      role: '2BHK Owner, Phase 1',
+      avatar: 'RM'
+    },
+    {
+      img: 'images/flats/2BHK - DSC_7900.jpg',
+      quote: 'We were looking for a 2BHK in Virar for months. Evershine Amavi stood out immediately \u2014 the club house, the kids play area, and the overall township feel make it worth every rupee. Possession was on time too.',
+      name: 'Priya S.',
+      role: '2BHK Owner, Phase 2',
+      avatar: 'PS'
+    },
+    {
+      img: 'images/flats/2BHK - DSC_7902.jpg',
+      quote: 'RERA registration gave us confidence. The OC was already received when we visited. The 612 sq.ft. 2BHK is very spacious and the natural light is great. Evershine has been transparent throughout the process.',
+      name: 'Anil K.',
+      role: '2BHK Owner, Phase 3',
+      avatar: 'AK'
+    }
+  ];
+
+  const tabsContainer = document.getElementById('testi-tabs');
+  const featureImg = document.getElementById('testi-img');
+  const featureQuote = document.getElementById('testi-quote');
+  const featureAvatar = document.getElementById('testi-avatar');
+  const featureName = document.getElementById('testi-name');
+  const featureRole = document.getElementById('testi-role');
+  let currentTab = 0;
+
+  if (tabsContainer) {
+    function renderTabs() {
+      tabsContainer.innerHTML = testiData.map((t, i) => `
+        <div class="testi-tab${i === 0 ? ' active' : ''}" data-index="${i}">
+          <div class="testi-tab-avatar">${t.avatar}</div>
+          <div>
+            <div class="testi-tab-name">${t.name}</div>
+            <div class="testi-tab-role">${t.role}</div>
+            <div class="testi-tab-preview">${t.quote.slice(0, 55)}...</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showTestimonial(index) {
+      const t = testiData[index];
+      const feature = document.getElementById('testi-feature');
+      feature.classList.add('fading');
+      const preloader = new Image();
+      let loaded = false;
+      let timedOut = false;
+      preloader.onload = () => {
+        loaded = true;
+        if (timedOut) swap();
+      };
+      preloader.src = t.img;
+      setTimeout(() => {
+        timedOut = true;
+        if (loaded) swap();
+      }, 200);
+
+      function swap() {
+        featureImg.src = t.img;
+        featureImg.alt = t.name;
+        featureQuote.textContent = t.quote;
+        featureAvatar.textContent = t.avatar;
+        featureName.textContent = t.name;
+        featureRole.textContent = t.role;
+        feature.classList.remove('fading');
+      }
+
+      document.querySelectorAll('.testi-tab').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.testi-tab[data-index="${index}"]`).classList.add('active');
+      currentTab = index;
+    }
+
+    renderTabs();
+    showTestimonial(0);
+
+    tabsContainer.addEventListener('click', e => {
+      const tab = e.target.closest('.testi-tab');
+      if (tab) {
+        const idx = parseInt(tab.dataset.index);
+        if (idx !== currentTab) showTestimonial(idx);
+      }
+    });
+  }
 });

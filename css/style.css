@@ -1412,42 +1412,170 @@ img {
 }
 
 /* SOCIAL PROOF */
+/* TESTIMONIALS */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 24px;
+  align-items: stretch;
 }
 
-.testi-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--r-lg);
-  padding: 24px;
+.testi-feature {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  transition: opacity 0.25s ease;
 }
 
-.testi-stars {
-  color: var(--gold-mid);
-  font-size: 14px;
-  margin-bottom: 12px;
+.testi-feature.fading {
+  opacity: 0;
 }
 
-.testi-text {
-  font-size: 13px;
-  color: #B0BCC5;
-  line-height: 1.7;
-  margin-bottom: 16px;
+.testi-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 2/1;
+}
+
+.testi-feature-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 45%, rgba(0, 0, 0, 0.2) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+}
+
+.testi-quote-icon {
+  font-size: 32px;
+  color: var(--pink);
+  margin-bottom: 14px;
+  opacity: 0.8;
+}
+
+.testi-feature-content blockquote {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--white);
   font-style: italic;
+  margin: 0 0 20px 0;
+  max-width: 95%;
 }
 
-.testi-author {
-  font-size: 13px;
+.testi-feature-stars {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  color: #f4b942;
+  margin-bottom: 18px;
+}
+
+.testi-feature-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testi-feature-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.testi-feature-name {
+  font-size: 15px;
   font-weight: 600;
   color: var(--white);
 }
 
-.testi-role {
+.testi-feature-role {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.testi-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.testi-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.testi-tab:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.testi-tab.active {
+  background: rgba(239, 72, 137, 0.1);
+  border-color: var(--pink);
+  box-shadow: 0 4px 20px rgba(239, 72, 137, 0.15);
+}
+
+.testi-tab-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.testi-tab.active .testi-tab-avatar {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.testi-tab-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.testi-tab-role {
   font-size: 12px;
-  color: #6A7885;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.testi-tab-preview {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  line-height: 1.4;
 }
 
 /* FLOOR PLAN SECTION */
@@ -1760,6 +1888,67 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .testi-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .testi-tab {
+    flex: 1 0 auto;
+    min-width: 0;
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .testi-tab-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .testi-tab-preview {
+    display: none;
+  }
+
+  .testi-feature img {
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+
+  .testi-feature-overlay {
+    padding: 20px;
+  }
+
+  .testi-quote-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .testi-feature-stars {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .testi-feature-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .testi-feature-name {
+    font-size: 13px;
+  }
+
+  .testi-feature-role {
+    font-size: 11px;
+  }
+
+  .testi-feature img {
+    aspect-ratio: unset;
+    max-height: 400px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1994,6 +2183,11 @@ img {
 
   .stat-num {
     font-size: 20px;
+  }
+
+  .testi-feature-content blockquote {
+    font-size: 13px;
+    margin-bottom: 12px;
   }
 
   .section {
