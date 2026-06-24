@@ -381,8 +381,6 @@ img {
   border-radius: 4px;
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
   border: 1.5px solid rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s;
@@ -440,7 +438,7 @@ img {
   background: rgb(129 129 129 / 15%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 28px;
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -627,7 +625,7 @@ img {
 .config-card {
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 28px;
   position: relative;
   transition: all 0.25s;
@@ -725,7 +723,7 @@ img {
 .amenity-card {
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 14px 16px;
   text-align: left;
   transition: all 0.25s;
@@ -788,7 +786,7 @@ img {
 }
 
 .location-map {
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -948,7 +946,7 @@ img {
   align-self: stretch;
   /* background: url(../images/Gemini_Generated_Image_sencursencursenc.png) #454545; */
   background: linear-gradient(to top, #000000bf 20%, #0000002a), url(../images/Gemini_Generated_Image_sencursencursenc.png);
-  border-radius: 12px;
+  border-radius: 8px;
   position: relative;
   background-size: cover;
   background-position: center;
@@ -983,7 +981,7 @@ img {
   border-collapse: collapse;
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -1190,7 +1188,7 @@ img {
 .faq-item {
   background: var(--white);
   border: 1px solid rgba(239, 72, 137, 0.2);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -1298,23 +1296,51 @@ img {
 }
 
 /* BOTTOM CTA BAND */
+/* CTA BAND */
 .cta-band {
-  background: var(--gold);
-  padding: 56px 2rem;
+  background: var(--grey);
+  padding: 60px 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url(../images/flats/2BHK\ -\ DSC_7900.jpg) center / cover no-repeat;
+  opacity: 0.2;
+}
+
+.cta-band::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink), transparent 90%);
+}
+
+.cta-band-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .cta-band h2 {
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 700;
-  color: var(--ink);
+  color: var(--white);
   margin-bottom: 10px;
 }
 
 .cta-band p {
-  font-size: 16px;
-  color: rgba(26, 26, 46, 0.7);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 28px;
+  line-height: 1.6;
 }
 
 .cta-band-btns {
@@ -1324,48 +1350,48 @@ img {
   flex-wrap: wrap;
 }
 
-.cta-band-inner {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.btn-dark {
-  background: var(--ink);
+.btn-pink {
+  background: var(--pink);
   color: var(--white);
   padding: 14px 32px;
-  border-radius: var(--r);
+  border-radius: 8px;
   font-size: 15px;
   font-weight: 700;
-  transition: all 0.2s;
+  transition: all 0.3s;
   display: inline-block;
 }
 
-.btn-dark:hover {
-  background: #2D2D4A;
-  transform: translateY(-1px);
+.btn-pink:hover {
+  background: #d63872;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 72, 137, 0.3);
 }
 
-.btn-white {
-  background: var(--white);
-  color: var(--ink);
+.btn-outline {
+  background: transparent;
+  color: var(--white);
   padding: 14px 32px;
-  border-radius: var(--r);
+  border-radius: 8px;
   font-size: 15px;
   font-weight: 700;
-  transition: all 0.2s;
-  display: inline-block;
-  border: 2px solid transparent;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-white:hover {
-  border-color: var(--ink);
+.btn-outline:hover {
+  border-color: var(--pink);
+  background: rgba(239, 72, 137, 0.1);
+  transform: translateY(-2px);
 }
 
 /* FOOTER */
 .site-footer {
-  background: #111118;
-  color: #8A9BA5;
-  padding: 40px 2rem 24px;
+  background: #151515;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 48px 2rem 24px;
 }
 
 .footer-inner {
@@ -1384,34 +1410,80 @@ img {
   font-size: 13px;
   line-height: 1.7;
   margin-top: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.footer-logo-text span {
+  color: var(--pink);
+}
+
+.footer-rera-badge {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-rera-badge i {
+  color: var(--pink);
+  font-size: 13px;
 }
 
 .footer-col h4 {
   font-size: 13px;
   font-weight: 600;
   color: var(--white);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-col h4 i {
+  color: var(--pink);
+  font-size: 15px;
 }
 
 .footer-col ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 
 .footer-col ul li a {
-  font-size: 12px;
-  color: #8A9BA5;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-col ul li a i {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
   transition: color 0.2s;
 }
 
 .footer-col ul li a:hover {
-  color: var(--gold-mid);
+  color: var(--pink);
+}
+
+.footer-col ul li a:hover i {
+  color: var(--pink);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -1422,23 +1494,25 @@ img {
 
 .footer-bottom p {
   font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-bottom a {
+  text-decoration: none;
 }
 
 .footer-rera {
   font-size: 11px;
-  color: #6A7885;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.footer-logo-text {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--white);
-}
-
-.footer-rera-badge {
-  margin-top: 8px;
-  font-size: 11px;
-  color: #6A7885;
+.disclaimer-text {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1.6;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* STICKY CTA MOBILE */
@@ -1588,7 +1662,7 @@ img {
   padding: 20px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -1678,7 +1752,7 @@ img {
 .plan-slider {
   width: 100%;
   position: relative;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -1784,7 +1858,7 @@ img {
   align-items: center;
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
