@@ -218,7 +218,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
             const current = progress * target;
-            el.textContent = current.toFixed(decimals) + suffix;
+            const formatted = current.toFixed(decimals);
+            const parts = formatted.split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            el.textContent = parts.join('.') + suffix;
             if (progress < 1) {
               requestAnimationFrame(animate);
             }

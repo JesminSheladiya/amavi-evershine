@@ -1109,6 +1109,11 @@ img {
 }
 
 /* BUILDER TRUST */
+
+.credentials-section {
+  margin-top: 70px;
+}
+
 .trust-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1117,23 +1122,55 @@ img {
 
 .trust-card {
   background: var(--white);
-  border: 1px solid var(--border);
+  border: 1px solid #ef48893b;
   border-radius: var(--r-lg);
   padding: 24px;
   text-align: center;
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.trust-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pink), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.trust-card:hover {
+  border-color: var(--pink);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(239, 72, 137, 0.12);
+}
+
+.trust-card:hover::before {
+  transform: scaleX(1);
 }
 
 .trust-num {
   font-size: 30px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--pink);
   margin-bottom: 4px;
 }
 
 .trust-desc {
   font-size: 13px;
   color: var(--ink-muted);
+}
+
+@media (max-width: 600px) {
+  .credentials-section {
+    margin-top: 0px;
+  }
 }
 
 /* FAQ */
