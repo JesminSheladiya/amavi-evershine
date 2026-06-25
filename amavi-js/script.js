@@ -250,21 +250,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // TESTIMONIALS TABS
   const testiData = [
     {
-      img: 'images/flats/2BHK - DSC_7893.jpg',
+      img: '/amavi-images/flats/2BHK - DSC_7893.jpg',
       quote: 'The all-inclusive pricing was a game changer \u2014 no hidden costs. The 2BHK feels much bigger than the square footage suggests. Really happy with the quality of finishes.',
       name: 'Rajesh M.',
       role: '2BHK Owner, Phase 1',
       avatar: 'RM'
     },
     {
-      img: 'images/flats/2BHK - DSC_7900.jpg',
+      img: '/amavi-images/flats/2BHK - DSC_7900.jpg',
       quote: 'We were looking for a 2BHK in Virar for months. Evershine Amavi stood out immediately \u2014 the club house, the kids play area, and the overall township feel make it worth every rupee. Possession was on time too.',
       name: 'Priya S.',
       role: '2BHK Owner, Phase 2',
       avatar: 'PS'
     },
     {
-      img: 'images/flats/2BHK - DSC_7902.jpg',
+      img: '/amavi-images/flats/2BHK - DSC_7902.jpg',
       quote: 'RERA registration gave us confidence. The OC was already received when we visited. The 612 sq.ft. 2BHK is very spacious and the natural light is great. Evershine has been transparent throughout the process.',
       name: 'Anil K.',
       role: '2BHK Owner, Phase 3',

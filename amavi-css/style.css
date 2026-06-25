@@ -985,8 +985,8 @@ img {
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  /* background: url(../images/Gemini_Generated_Image_sencursencursenc.png) #454545; */
-  background: linear-gradient(to top, #000000bf 20%, #0000002a), url(../images/Gemini_Generated_Image_sencursencursenc.png);
+  /* background: url(../amavi-images/Gemini_Generated_Image_sencursencursenc.png) #454545; */
+  background: linear-gradient(to top, #000000bf 20%, #0000002a), url(../amavi-images/Gemini_Generated_Image_sencursencursenc.png);
   border-radius: var(--r-xl);
   position: relative;
   background-size: cover;
@@ -2007,7 +2007,7 @@ img {
 
   .about-intro {
     align-self: auto;
-    background: linear-gradient(to top, #000000bf 20%, #000000bf), url(../images/Gemini_Generated_Image_sencursencursenc.png);
+    background: linear-gradient(to top, #000000bf 20%, #000000bf), url(../amavi-images/Gemini_Generated_Image_sencursencursenc.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
