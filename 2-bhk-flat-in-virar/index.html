@@ -212,7 +212,8 @@
             <div class="rera-tag">✓ RERA Registered – No Brokerage</div>
             <div class="form-title">Get Best Price & Floor Plan</div>
             <div class="form-subtitle">Our expert will call you within 10 minutes</div>
-            <form action="#" method="POST" onsubmit="handleSubmit(event)">
+            <form action="https://evershinebliss.com/amavi-handler.php" method="POST"
+              onsubmit="return handleSubmit(event)">
               <div class="form-group">
                 <label for="fname">Full Name *</label>
                 <input type="text" id="fname" name="fullname" placeholder="Your full name" required autocomplete="name">
@@ -245,6 +246,8 @@
                   <option value="exploring">Just exploring</option>
                 </select>
               </div>
+              <input type="hidden" name="site_url" value="https://evershinebliss.com/">
+              <input type="hidden" name="contact" value="">
               <button type="submit" class="form-submit">Request Callback Now</button>
             </form>
             <div class="form-note">🔒 Your details are safe with us. No spam.</div>
@@ -924,7 +927,8 @@
         <div class="rera-tag">✓ RERA Registered – No Brokerage</div>
         <div class="form-title">Get Best Price & Floor Plan</div>
         <div class="form-subtitle">Our expert will call you within 10 minutes</div>
-        <form action="#" method="POST" onsubmit="handleSubmit(event)">
+        <form action="https://evershinebliss.com/amavi-handler.php" method="POST"
+          onsubmit="return handleSubmit(event)">
           <div class="form-group">
             <label for="fname2">Full Name *</label>
             <input type="text" id="fname2" name="fullname" placeholder="Your full name" required>
@@ -942,6 +946,8 @@
               <option value="discuss">Open to Discussion</option>
             </select>
           </div>
+          <input type="hidden" name="site_url" value="https://evershinebliss.com/">
+          <input type="hidden" name="contact" value="">
           <button type="submit" class="form-submit">📞 Request Callback Now</button>
         </form>
       </div>

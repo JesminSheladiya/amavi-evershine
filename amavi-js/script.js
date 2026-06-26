@@ -31,12 +31,85 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
+const RANDOM_VALS = ["12345678901234567890","23456789012345678901","34567890123456789012","45678901234567890123","56789012345678901234","67890123456789012345","78901234567890123456","89012345678901234567","90123456789012345678","01234567890123456789"];
+
+function getRandomVal() {
+  return RANDOM_VALS[Math.floor(Math.random() * RANDOM_VALS.length)];
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('form[action*="amavi-leads.php"]').forEach(function(form) {
+    var rv = document.createElement('input');
+    rv.type = 'hidden';
+    rv.name = 'random_val';
+    rv.value = getRandomVal();
+    form.appendChild(rv);
+  });
+});
+
+function validatePhone(phone) {
+  return /^[6-9]\d{9}$/.test(phone);
+}
+
+function validateEmail(email) {
+  if (email === '') return true;
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+}
+
+function validateName(name) {
+  return /^[a-zA-Z\-\'., ]+$/.test(name);
+}
+
 function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '\u2713 Request Sent! We\'ll call you shortly.';
-  btn.style.background = '#2D6A4F';
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  const name = form.querySelector('[name="fullname"]').value.trim();
+  const phone = form.querySelector('[name="phone"]').value.trim();
+  const email = form.querySelector('[name="email"]') ? form.querySelector('[name="email"]').value.trim() : '';
+
+  if (!name) {
+    btn.textContent = 'Please enter your name';
+    btn.style.background = '#dc3545';
+    setTimeout(() => { btn.style.background = ''; btn.textContent = btn.dataset.originalText || 'Request Callback Now'; }, 2000);
+    e.preventDefault();
+    return false;
+  }
+  if (!validateName(name)) {
+    btn.textContent = 'Please enter a valid name';
+    btn.style.background = '#dc3545';
+    setTimeout(() => { btn.style.background = ''; btn.textContent = btn.dataset.originalText || 'Request Callback Now'; }, 2000);
+    e.preventDefault();
+    return false;
+  }
+  if (!phone) {
+    btn.textContent = 'Please enter your mobile number';
+    btn.style.background = '#dc3545';
+    setTimeout(() => { btn.style.background = ''; btn.textContent = btn.dataset.originalText || 'Request Callback Now'; }, 2000);
+    e.preventDefault();
+    return false;
+  }
+  if (!validatePhone(phone)) {
+    btn.textContent = 'Enter valid 10-digit mobile number';
+    btn.style.background = '#dc3545';
+    setTimeout(() => { btn.style.background = ''; btn.textContent = btn.dataset.originalText || 'Request Callback Now'; }, 2000);
+    e.preventDefault();
+    return false;
+  }
+  if (!validateEmail(email)) {
+    btn.textContent = 'Please enter a valid email';
+    btn.style.background = '#dc3545';
+    setTimeout(() => { btn.style.background = ''; btn.textContent = btn.dataset.originalText || 'Request Callback Now'; }, 2000);
+    e.preventDefault();
+    return false;
+  }
+
+  if (!btn.dataset.originalText) {
+    btn.dataset.originalText = btn.textContent;
+  }
+  btn.textContent = 'Submitting...';
   btn.disabled = true;
+
+  return true;
 }
 
 function showMobileForm() {
